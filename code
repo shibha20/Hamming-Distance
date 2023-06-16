@@ -1,0 +1,23 @@
+class Solution(object):
+    def hammingDistance(self, x, y):
+        """
+        :type x: int
+        :type y: int
+        :rtype: int
+        """
+        count = 0 
+
+        binary_x = bin(x)[2:]
+        binary_y = bin (y)[2:]
+        max_len = max(len(binary_x), len(binary_y))
+
+    # Prepend leading zeros to the shorter binary number
+        binary_x = binary_x.zfill(max_len)
+        binary_y = binary_y.zfill(max_len)
+
+
+        for i,j in zip(binary_x,binary_y):
+            if (int(i)^int(j) == 1):
+                count += 1
+            
+        return count
